@@ -13,7 +13,6 @@ class ASCIIArtGenerator:
         self.create_widgets()
     
     def create_big_letter_r(self):
-        """Создает очень толстую букву R (3 символа толщиной)"""
         big_r = [
             "RRRRRRRRRRRRRRRRRRRRRRRRRRRR",
             "RRRRRRRRRRRRRRRRRRRRRRRRRRRR",
@@ -41,7 +40,6 @@ class ASCIIArtGenerator:
         return big_r
     
     def create_big_letter_e(self):
-        """Создает очень толстую букву E (3 символа толщиной)"""
         big_e = [
             "EEEEEEEEEEEEEEEEEEEEEEEEEEEE",
             "EEEEEEEEEEEEEEEEEEEEEEEEEEEE",
@@ -70,7 +68,6 @@ class ASCIIArtGenerator:
         return big_e
     
     def create_big_letter_r_ascii(self):
-        """Создает толстую букву R из ASCII символов (3 символа толщиной)"""
         big_r_ascii = [
             "@@@@@@@@####$$$$%%%%&&&&****((()))",
             "@@@@@@@@####$$$$%%%%&&&&****((()))",
@@ -98,7 +95,6 @@ class ASCIIArtGenerator:
         return big_r_ascii
     
     def create_big_letter_e_ascii(self):
-        """Создает толстую букву E из ASCII символов (3 символа толщиной)"""
         big_e_ascii = [
             "!!!!@@@@####$$$$%%%%^^&&****((()))",
             "!!!!@@@@####$$$$%%%%^^&&****((()))",
@@ -127,7 +123,6 @@ class ASCIIArtGenerator:
         return big_e_ascii
     
     def create_big_letter_r_matrix(self):
-        """Толстая буква R в стиле матрицы (3 символа толщиной)"""
         big_r_matrix = [
             "1111111111111111111111111111",
             "1111111111111111111111111111",
@@ -155,7 +150,6 @@ class ASCIIArtGenerator:
         return big_r_matrix
     
     def create_big_letter_e_matrix(self):
-        """Толстая буква E в стиле матрицы (3 символа толщиной)"""
         big_e_matrix = [
             "1111111111111111111111111111",
             "1111111111111111111111111111",
@@ -184,7 +178,6 @@ class ASCIIArtGenerator:
         return big_e_matrix
     
     def create_big_letter_r_mixed(self):
-        """Толстая буква R из смешанных символов (3 символа толщиной)"""
         big_r_mixed = [
             "123ABC!@#456DEF$%^789GHI&*(",
             "abcJKL) _+defMNO= []ghiPQR{}",
@@ -212,7 +205,6 @@ class ASCIIArtGenerator:
         return big_r_mixed
     
     def create_big_letter_e_mixed(self):
-        """Толстая буква E из смешанных символов (3 символа толщиной)"""
         big_e_mixed = [
             "QWE123RTY456UIO789PAS!@#DFG",
             "HJK$%^LZX&*(CVB)_+NMQ=[]WER",
@@ -251,7 +243,6 @@ class ASCIIArtGenerator:
         )
         title.pack(pady=25)
         
-        # Фрейм для выбора стиля
         style_frame = tk.Frame(self.window, bg="black")
         style_frame.pack(pady=20)
         
@@ -268,12 +259,10 @@ class ASCIIArtGenerator:
         )
         style_combo.pack(side="left", padx=20)
         style_combo.bind("<<ComboboxSelected>>", self.update_letters)
-        
-        # Фрейм для букв R и E
+
         self.letters_frame = tk.Frame(self.window, bg="black")
         self.letters_frame.pack(expand=True, pady=30)
         
-        # Метка для буквы R
         self.r_label = tk.Label(
             self.letters_frame,
             font=("Courier", 8, "bold"),
@@ -283,7 +272,6 @@ class ASCIIArtGenerator:
         )
         self.r_label.pack(side="left", padx=40)
         
-        # Метка для буквы E
         self.e_label = tk.Label(
             self.letters_frame,
             font=("Courier", 8, "bold"),
@@ -293,7 +281,6 @@ class ASCIIArtGenerator:
         )
         self.e_label.pack(side="left", padx=40)
         
-        # Кнопки
         button_frame = tk.Frame(self.window, bg="black")
         button_frame.pack(pady=25)
         
@@ -342,17 +329,14 @@ class ASCIIArtGenerator:
         )
         self.output_text.pack(pady=20, padx=30, fill=tk.BOTH, expand=True)
         
-        # Добавляем скроллбар
         scrollbar = tk.Scrollbar(self.output_text)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         self.output_text.config(yscrollcommand=scrollbar.set)
         scrollbar.config(command=self.output_text.yview)
         
-        # Теперь инициализируем буквы после создания всех виджетов
         self.update_letters()
     
     def update_letters(self, event=None):
-        """Обновляет отображение букв в зависимости от выбранного стиля"""
         style = self.style_var.get()
         
         if style == "simple":
@@ -377,7 +361,6 @@ class ASCIIArtGenerator:
         self.update_output()
     
     def generate_random_chars(self, pattern):
-        """Генерирует случайные символы, сохраняя форму буквы"""
         chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~"
         result = []
         
@@ -393,7 +376,6 @@ class ASCIIArtGenerator:
         return result
     
     def randomize_chars(self):
-        """Создает новые случайные символы, сохраняя форму букв"""
         style = self.style_var.get()
         
         if style == "simple":
@@ -417,7 +399,6 @@ class ASCIIArtGenerator:
         self.update_output_custom(new_r, new_e)
     
     def update_output(self):
-        """Обновляет текстовое поле с кодом"""
         if hasattr(self, 'output_text'):
             self.output_text.delete(1.0, tk.END)
             
@@ -441,7 +422,6 @@ class ASCIIArtGenerator:
             self.output_text.insert(tk.END, "БУКВА E:\n" + "\n".join(e_art))
     
     def update_output_custom(self, r_art, e_art):
-        """Обновляет вывод для пользовательских символов"""
         if hasattr(self, 'output_text'):
             self.output_text.delete(1.0, tk.END)
             
@@ -451,7 +431,6 @@ class ASCIIArtGenerator:
             self.output_text.insert(tk.END, "БУКВА E:\n" + "\n".join(e_art))
     
     def copy_code(self):
-        """Копирует код в буфер обмена"""
         if hasattr(self, 'output_text'):
             code = self.output_text.get(1.0, tk.END)
             self.window.clipboard_clear()
@@ -461,7 +440,6 @@ class ASCIIArtGenerator:
             self.window.after(2000, lambda: self.copy_btn.config(text="📋 Копировать код"))
     
     def start_animation(self):
-        """Анимация смены цветов"""
         colors = ["#00FF00", "#00FFFF", "#FF00FF", "#FFFF00", "#FF4444", "#4444FF", "#00FF00"]
         original_text = "🎬 Запустить анимацию"
         self.animate_btn.config(text="⏳ Анимация...", state="disabled")
@@ -482,4 +460,5 @@ class ASCIIArtGenerator:
 # Запуск программы
 if __name__ == "__main__":
     app = ASCIIArtGenerator()
+
     app.run()
